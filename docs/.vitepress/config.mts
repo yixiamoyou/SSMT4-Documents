@@ -16,7 +16,7 @@ export default defineConfig({
     nav,
     sidebar,
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/StarBobis/SSMT4-Alpha' }
     ],
     search: {
       provider: 'local'

@@ -1,12 +1,11 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { useData, withBase } from 'vitepress'
+import { ref, onMounted } from 'vue'
+import { withBase } from 'vitepress'
 import { initMeteorEffect, stopMeteorEffect } from '../meteors'
 import { isEffectsEnabled } from '../themeState'
 // @ts-ignore
 import customStyles from '../index.css?inline'
 
-const { site } = useData()
 const isLoading = ref(false)
 const videoElement = ref(null)
 
@@ -28,16 +27,9 @@ const toggleEffects = () => {
 const disableEffects = () => {
   // Remove video
   if (videoElement.value) {
-    // Properly cleanup video resources
     videoElement.value.pause()
-    const src = videoElement.value.src
     videoElement.value.src = ''
     videoElement.value.load()
-    
-    if (src && src.startsWith('blob:')) {
-      URL.revokeObjectURL(src)
-    }
-    
     videoElement.value.remove()
     videoElement.value = null
   } else {
@@ -51,9 +43,6 @@ const disableEffects = () => {
       el.src = ''
       // @ts-ignore
       el.load()
-      if (src && src.startsWith('blob:')) {
-        URL.revokeObjectURL(src)
-      }
       el.remove()
     }
   }
@@ -86,46 +75,8 @@ const enableEffects = () => {
 
 const loadVideo = () => {
   const videoUrl = withBase('/background.webm')
-  
-  console.log('Start loading video:', videoUrl)
-  
-  fetch(videoUrl)
-    .then(response => {
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
-      return response.blob()
-    })
-    .then(blob => {
-      if (!isEffectsEnabled.value) return // User might have cancelled
 
-      const blobUrl = URL.createObjectURL(blob)
-      createVideoElement(blobUrl)
-      isLoading.value = false
-    })
-    .catch(e => {
-      console.error('Video load error:', e)
-      // Fallback to mp4
-      if (videoUrl.endsWith('.webm')) {
-         const mp4Url = withBase('/background.mp4')
-         fetch(mp4Url)
-            .then(res => {
-                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
-                return res.blob()
-            })
-            .then(blob => {
-                if (!isEffectsEnabled.value) return
-                createVideoElement(URL.createObjectURL(blob))
-                isLoading.value = false
-            })
-            .catch(err => {
-                console.error("MP4 fallback failed", err)
-                isLoading.value = false
-                // isEffectsEnabled.value = false // Reset state on failure
-            })
-      } else {
-          isLoading.value = false
-          // isEffectsEnabled.value = false
-      }
-    })
+  createVideoElement(videoUrl)
 }
 
 const createVideoElement = (src) => {
@@ -138,6 +89,7 @@ const createVideoElement = (src) => {
   video.autoplay = true
   video.muted = true
   video.loop = true
+  video.preload = 'auto'
   video.playsInline = true
   
   video.style.cssText = `
@@ -158,12 +110,27 @@ const createVideoElement = (src) => {
   document.body.appendChild(video)
   videoElement.value = video
 
-  video.addEventListener('canplay', () => {
+  const tryPlay = () => {
     video.play().then(() => {
       video.style.opacity = '0.3'
+      isLoading.value = false
     }).catch(() => {
-        // Autoplay failed
+      isLoading.value = false
     })
+  }
+
+  video.addEventListener('canplay', tryPlay, { once: true })
+  video.addEventListener('error', () => {
+    if (src.endsWith('.webm')) {
+      video.pause()
+      video.remove()
+      if (videoElement.value === video) {
+        videoElement.value = null
+      }
+      createVideoElement(withBase('/background.mp4'))
+    } else {
+      isLoading.value = false
+    }
   }, { once: true })
 }
 

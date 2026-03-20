@@ -7,7 +7,8 @@ import EffectSwitch from './components/EffectSwitch.vue'
 import GoogleTranslate from './components/GoogleTranslate.vue'
 import { h } from 'vue'
 
-import DarkWatcher from '../components/DarkWatcher.vue'
+import DarkWatcher from "../components/DarkWatcher.vue";
+import Lemma from "../components/Lemma.vue";
 
 export default {
     extends: DefaultTheme,
@@ -19,11 +20,16 @@ export default {
     },
 
     enhanceApp(ctx) {
-        // tabs 插件
-        enhanceAppWithTabs(ctx.app)
+        enhanceAppWithTabs(ctx.app);
 
-        // 自定义组件
-        ctx.app.component('DarkWatcher', DarkWatcher)
+        ctx.app.component("DarkWatcher", DarkWatcher);
+        ctx.app.component("Lemma", Lemma);
 
+        const lemmaCounter = ref(0);
+        ctx.app.provide("lemmaCounter", lemmaCounter);
+
+        ctx.router.onAfterRouteChange = () => {
+            lemmaCounter.value = 0;
+        };
     },
-} satisfies Theme
+} satisfies Theme;

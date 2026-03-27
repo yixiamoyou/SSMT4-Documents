@@ -22,7 +22,7 @@ export const nav: DefaultTheme.Config['nav'] = [
     items: [
       {
         text: '崩坏:星穹铁道',
-        link: '/games/SRMI/CantDumpFullBody/CantDumpFullBody'
+        link: '/games/srmi/CantDumpFullBody/CantDumpFullBody'
       }
     ]
   },

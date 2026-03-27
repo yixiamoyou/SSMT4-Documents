@@ -17,7 +17,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: 'Mod自动逆向',
       items: [
         { text: '介绍', link: '/newbie/reverse/Introduction/Introduction' },
-        { text: '如何激活自动逆向', link: '/newbie/reverse/HowToActivateAutoReverse/HowToActivateAutoReverse' }
+        { text: '如何激活自动逆向', link: '/newbie/reverse/HowToActivateAutoReverse/HowToActivateAutoReverse' },
+        { text: '萌新常见问题', link: '/newbie/reverse/FAQ/FAQ' },
       ]
     }
   ],
@@ -80,7 +81,13 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       items: [
         { text: '无法导出完整角色体型', link: '/games/srmi/CantDumpFullBody/CantDumpFullBody' }
       ]
-    }
+    },
+    {
+      text: '燕云十六声',
+      items: [
+        { text: 'YYSLS基础配置', link: '/games/yysls/BasicConfig/BasicConfig' }
+      ]
+    },
   ],
   '/': [
     {

@@ -23,6 +23,10 @@ export const nav: DefaultTheme.Config['nav'] = [
       {
         text: '崩坏:星穹铁道',
         link: '/games/srmi/CantDumpFullBody/CantDumpFullBody'
+      },
+      {
+        text: '燕云十六声',
+        link: '/games/yysls/BasicConfig/BasicConfig'
       }
     ]
   },

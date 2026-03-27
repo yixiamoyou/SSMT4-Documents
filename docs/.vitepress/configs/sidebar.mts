@@ -74,13 +74,17 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       ]
     }
   ],
+  '/games/': [
+    {
+      text: '崩坏:星穹铁道',
+      items: [
+        { text: '无法导出完整角色体型', link: '/games/srmi/CantDumpFullBody/CantDumpFullBody' }
+      ]
+    }
+  ],
   '/': [
     {
-      text: 'Examples',
-      items: [
-        { text: 'Markdown Examples', link: '/markdown-examples' },
-        { text: 'Runtime API Examples', link: '/api-examples' }
-      ]
+      text: '前方的区域，以后再来探索吧'
     }
   ]
 }

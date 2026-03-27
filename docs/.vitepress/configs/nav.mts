@@ -16,6 +16,16 @@ export const nav: DefaultTheme.Config['nav'] = [
       }
     ]
   },
+  {
+    text: '游戏配置',
+    activeMatch: '/games/',
+    items: [
+      {
+        text: '崩坏:星穹铁道',
+        link: '/games/SRMI/CantDumpFullBody/CantDumpFullBody'
+      }
+    ]
+  },
   { 
     text: '开发者文档', 
     activeMatch: '/developer/',

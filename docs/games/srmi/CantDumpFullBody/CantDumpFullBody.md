@@ -24,7 +24,9 @@ no no no ,你应该在游戏配置页面，右键新建一个游戏配置：
 
 ![alt text](image-6.png)
 
-然后将其配置为SRMI的配置，然后每次做Mod的时候选择这个新建的SRMIDEV配置
+然后将其配置为SRMI的配置，然后每次做Mod的时候选择这个新建的SRMIDEV配置来启动游戏
+
+让玩Mod和做Mod使用两套不同的配置，做Mod的配置中不放任何Mod防止干扰Buffer内容
 
 ![alt text](image-7.png)
 

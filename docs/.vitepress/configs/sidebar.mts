@@ -40,6 +40,10 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         { text: '萌新常见问题', link: '/newbie/reverse/FAQ/FAQ' },
         { text: '其它常见问题', link: '/newbie/reverse/T006FAQ/T006FAQ' },
 
+        //WhyNoFaceModel
+        { text: 'Mod逆向后缺少脸部模型?', link: '/newbie/reverse/WhyNoFaceModel/WhyNoFaceModel' },
+
+
       ]
     }
   ],

@@ -152,7 +152,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         { text: 'Mod边缘剧烈抖动', link: '/games/gimi/ModIsShaking/ModIsShaking' },
         { text: 'OR Fix与NN Fix', link: '/games/gimi/ORFixAndNNFix/ORFixAndNNFix' },
         { text: '轮廓线修复', link: '/games/gimi/OutlineFix/OutlineFix' },
-        { text: '使用原神Mod不报错', link: '/games/gimi/PlayWithoutError/PlayWithoutError' }
       ]
     }
   ],

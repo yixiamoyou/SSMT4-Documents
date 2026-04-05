@@ -56,10 +56,10 @@ export const nav: DefaultTheme.Config['nav'] = [
         text: '崩坏3',
         link: '/games/himi/OutlineFix/OutlineFix'
       },
-      {
-        text: '第五人格',
-        link: '/games/identityv/NeoX3Guide/NeoX3Guide'
-      },
+      // {
+      //   text: '第五人格',
+      //   link: '/games/identityv/NeoX3Guide/NeoX3Guide'
+      // },
       {
         text: 'Liar\'s Bar',
         link: '/games/liarsbar/PistolModelIssue/PistolModelIssue'

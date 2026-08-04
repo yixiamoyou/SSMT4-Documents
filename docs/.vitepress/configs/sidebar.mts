@@ -156,7 +156,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: '原神',
       items: [
         { text: '基础信息', link: '/games/gimi/BaseInfo/BaseInfo' },
-        { text: '10612-4001修复方法', link: '/games/gimi/HowToSolveErrorCode/HowToSolveErrorCode' },
         { text: '颜色不匹配问题', link: '/games/gimi/ColorMismatch/ColorMismatch' },
         { text: '脸部隐藏问题', link: '/games/gimi/FaceHidingIssue/FaceHidingIssue' },
         { text: 'Mod扭曲或失效', link: '/games/gimi/ModDistortion/ModDistortion' },
